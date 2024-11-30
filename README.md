@@ -11,21 +11,21 @@ our LangGraph `agent` (located in this repository) through LangGraph Studio and 
     TAVILY_API_KEY=
     ```
 2. Start the agent through LangGraph Studio or Cloud
-2. Create a `.env` in the root of this project with the following:
+3. Create a `.env` in the root of this project with the following:
     ```
     DEPLOYMENT_URL=
     LANGSMITH_API_KEY=
     ASSISTANT_NAME=
     ```
-3. Install the dependencies.
+4. Install the dependencies.
     ```
     pnpm install
     ```
 
-4. Run the script. You'll find the events written to `output.txt`.
+5. Run the script. You'll find the events written to `output.json`.
     ```
     pnpm start
     ```
 
-On completion, the raw events of a run will be written to `output.txt`. The events we're specifically looking at are the 
+On completion, the raw events of a run will be written to `output.json`. The events we're specifically looking at are the 
 `copilotkit_manually_emit_intermediate_state` events.

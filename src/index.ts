@@ -29,10 +29,10 @@ const assistantName = process.env.ASSISTANT_NAME;
     }
   );
 
-  const outputPath = path.join(process.cwd(), "output.txt");
+  const outputPath = path.join(process.cwd(), "output.json");
 
   try {
-    console.log("Streaming response to output.txt...");
+    console.log("Streaming response to output.json...");
     fs.writeFileSync(outputPath, "", { encoding: "utf8" });
     for await (const chunk of streamResponse) {
       fs.appendFileSync(outputPath, JSON.stringify(chunk, null, 2) + "\n", { encoding: "utf8" });
