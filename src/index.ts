@@ -29,17 +29,10 @@ const assistantName = process.env.ASSISTANT_NAME;
     }
   );
 
-  const outputPath = path.join(process.cwd(), "output.json");
-
-  try {
-    console.log("Streaming response to output.json...");
-    fs.writeFileSync(outputPath, "", { encoding: "utf8" });
-    for await (const chunk of streamResponse) {
-      fs.appendFileSync(outputPath, JSON.stringify(chunk, null, 2) + "\n", { encoding: "utf8" });
+  for await (const chunk of streamResponse) {
+    if ("on_custom_event" === chunk.data.event) {
+      console.log(`> Current Unix Timestamp: ${Date.now()}`);
+      console.log(JSON.stringify(chunk.data.data));
     }
-    console.log("Streaming complete.");
-  } catch (error) {
-    console.error("Error writing to file:", error);
-    process.exit(1);
   }
 })();
